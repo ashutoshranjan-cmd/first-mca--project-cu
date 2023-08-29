@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="title.png">
+</head>
+
+<body onload="  window.scrollTo(0,0)">
+    <nav>
+        <ul>
+            <li><a style="color:lightgreen;" href="#Home">Home</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#Songs">Songs</a></li>
+            <li><a href="#ToDo">Note</a></li>
+            <li><a href="#Map">Map</a></li>
+            <div id="clock">
+                here wil be the clock
+            </div>
+        </ul>
+    </nav>
+    <div class="container" id="Home">
+        <button class="btn1"><ion-icon name="chevron-back-circle-outline"></ion-icon></button>
+        <div class="head-container">
+            <h1 class="heading" id="first">This is heading H1</h1>
+            <h2 class="heading">This is heading H2</h2>
+            <h3 class="heading">This is heading H3</h3>
+            <h4 class="heading">This is heading H4</h4>
+            <h5 class="heading">This is heading H5</h5>
+            <h6 class="heading">This is heading H6</h6>
+        </div>
+        <button class="btn2"><ion-icon name="chevron-forward-circle-outline"></ion-icon></button>
+    </div>
+    <div class="container" id="videos">
+        <video src="nature.mp4" id="main-vid" autoplay controls controlsList="nodownload" muted></video>
+
+        <div class="video-box1">
+            <div class="video-title">
+                <video src="nature.mp4" muted class="vid-list" poster="poster.png"></video>
+                <p>Sample Video 1</p>
+            </div>
+            <div class="video-title">
+                <video src="nature2.mp4" muted class="vid-list" poster="poster.png"></video>
+                <p>Sample Video 2</p>
+            </div>
+
+            <div class="video-title">
+                <video src="video3.mp4" muted class="vid-list" poster="poster.png"></video>
+                <p>Sample Video 3</p>
+            </div>
+
+            <div class="video-title">
+                <video src="nature2.mp4" muted class="vid-list" poster="poster.png"></video>
+                <p>Sample Video 4</p>
+            </div>
+
+            <div class="video-title">
+                <video src="nature.mp4" muted class="vid-list" poster="poster.png"></video>
+                <p>Sample Video 5</p>
+            </div>
+
+            <div class="video-title">
+                <video src="video3.mp4" muted class="vid-list" poster="poster.png"></video>
+                <p>Sameple Video 6</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="container" id="Songs">
+        <img src="img.avif" alt="">
+        <audio src="music1.mp3" controls controlsList="nodownload">song</audio>
+    </div>
+    <div class="container" id="ToDo">
+        <div class="todo-list">
+            <form action="">
+                <input id="uid" type="text" placeholder="Enter your uid here ..." onfocus="this.placeholder=''"
+                    onblur="this.placeholder='Enter your uid here ...'">
+                <input id="name" type="text" placeholder="Enter your name here ..." onfocus="this.placeholder=''"
+                    onblur="this.placeholder='Enter your name here ...'">
+                <input id="branch" type="text" placeholder="Enter your branch here ..." onfocus="this.placeholder=''"
+                    onblur="this.placeholder='Enter your branch name ...'">
+                <input id="submit" type="submit">
+            </form>
+        </div>
+        <div class="todo-list" id="ashutosh">
+
+            <table>
+                <tr>
+                    <th>UID</th>
+                    <th>Name</th>
+                    <th>Branch</th>
+                </tr>
+                <tr>
+                    <td>49</td>
+                    <td>ASHUTOSH RANJAN</td>
+                    <td>MCA</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="container" id="Map">
+        <img id="img-map" src="tech.webp" style="border-radius: 10px;" alt="Workplace" usemap="#workmap" width="600"
+            height="450">
+        <!-- onmousemove="coords(event)"  -->
+        <map name="workmap">
+            <area shape="rect" coords="54,50,230,225" alt="phone" target="_blank"
+                href="https://www.gsmarena.com/samsung_galaxy_z_fold4-11737.php">
+            <area shape="rect" coords="235,57,1106,230" alt="tv" target="_blank"
+                href="https://www.samsung.com/in/tvs/oled-tv/s95c-55-inch-oled-4k-smart-tv-qa55s95caklxl/">
+            <area shape="rect" coords="54,400,230,200" alt="macbook-pro" target="_blank"
+                href="https://www.apple.com/in/macbook-pro/">
+            <area shape="rect" coords="235,285,1106,602" alt="gadgets" target="_blank"
+                href="https://www.gadgets360.com/">
+        </map>
+    </div>
+    <footer>
+        This website is made by ASHUTOSH RANJAN &copy copy righed
+    </footer>
+</body>
+<script>
+    
+    //code for the clock
+    setInterval((e) => {
+        const date = new Date();
+        document.getElementById('clock').innerHTML = date.toLocaleTimeString();
+
+    }, 1000);
+    //code for the navigation bar
+    const temp = document.querySelectorAll('li a');
+    temp.forEach((e) => {
+        e.addEventListener('click', (event) => {
+            temp.forEach((d) => {
+                d.style.color = 'white';
+            })
+            event.target.style.color = 'lightgreen';
+        })
+    })
+    //code for the video section
+    const video = document.querySelectorAll('.video-title ');
+    video.forEach((a) => {
+        // console.log(a)
+        a.addEventListener('click', (event) => {
+            console.log(event)
+            document.querySelector('#main-vid').src = a.children[0].src;
+            // document.querySelector('#main-vid').src = event
+        })
+    })
+    //code for the table note section
+    const submit = document.getElementById('submit');
+    submit.addEventListener('click', (event) => {
+        event.preventDefault();
+        const uid = document.getElementById('uid').value;
+        const name = document.getElementById('name').value;
+        const branch = document.getElementById('branch').value;
+        if (uid != '' && name != '' && branch != '') {
+            const temp = `<tr><td>${uid}</td><td>${name.toUpperCase()}</td><td>${branch.toUpperCase()}</td></tr>`;
+            // localStorage.setItem(temp);
+            document.querySelector('table').innerHTML += temp;
+        }
+        document.getElementById('uid').value = '';
+        document.getElementById('name').value = '';
+        document.getElementById('branch').value = '';
+
+    })
+    //code for the heading slider
+    left = document.querySelector('.btn1')
+    right = document.querySelector('.btn2')
+    head = document.querySelectorAll('.heading')
+    var i = 0
+    left.addEventListener('click', () => {
+        head.forEach(function (value) {
+            value.style.display = 'none';
+        })
+        i--
+        if (i < 0) {
+            i = 5;
+        }
+        head[i].style.display = 'block'
+
+    })
+    right.addEventListener('click', () => {
+        head.forEach(function (value) {
+            value.style.display = 'none';
+        })
+        i++
+        if (i > 5) {
+            i = 0;
+        }
+        head[i].style.display = 'block'
+
+    })
+    // document.onmousemove = function (e) { document.title = "X: " + e.clientX + " - Y: " + e.clientY};
+    // function coords(event){
+    //     document.title = "X: " + event.clientX + " - Y: " + event.clientY;
+    // }
+</script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</html>
